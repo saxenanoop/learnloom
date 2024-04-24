@@ -1,57 +1,243 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>LearnLoom - Online Arduino and ChatGPT Classes</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnLoom - Robotics and AI Courses for Students</title>
+    <!-- Include Razorpay SDK -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <style>
+        /* Reset styles */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
         }
-        .header, .footer {
-            background-color: #f8f9fa;
+
+        /* Header styles */
+        header {
+            background-color: #4285f4; /* Google blue */
+            color: #fff;
             text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        /* Navigation styles */
+        nav {
+            background-color: #333;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff9500; /* Orange color on hover */
+        }
+
+        /* Container styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
         }
-        .content {
-            margin: 20px;
+
+        /* Course card styles */
+        .course {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
         }
-        .testimonial {
-            border: 1px solid #ddd;
+
+        .course h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .course p {
+            margin-bottom: 20px;
+        }
+
+        /* Registration form styles */
+        .register-form {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .register-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .register-form input[type="text"],
+        .register-form input[type="email"],
+        .register-form input[type="tel"],
+        .register-form select,
+        .register-form textarea {
+            width: 100%;
             padding: 10px;
-            margin: 10px 0;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .register-form input[type="submit"] {
+            background-color: #4285f4; /* Google blue */
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+        }
+
+        .register-form input[type="submit"]:hover {
+            background-color: #0f62fe; /* Darker shade of blue on hover */
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1rem;
+        }
+
+        /* Logo styles */
+        .logo {
+            display: block;
+            margin: 0 auto 20px;
+            max-width: 200px;
+        }
+
+        /* Course image styles */
+        .course-img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Welcome to LearnLoom</h1>
-        <p>Online Arduino and ChatGPT Classes for School Kids</p>
+    <header>
+        <img class="logo" src="https://cdn.glitch.global/4120dbb8-d613-4356-badb-226c69397b9e/logo.jpg?v=1713958866402" alt="LearnLoom Logo">
+        <h1>Learn Loom</h1>
+    </header>
+    
+    <nav>
+        <a href="#courses">View Courses</a>
+        <a href="#register">Register Now</a>
+    </nav>
+
+    <div class="container">
+        <section id="courses">
+            <h2>Featured Courses</h2>
+            <div class="course">
+                <h3>Introduction to Robotics</h3>
+                <img class="course-img" src="https://via.placeholder.com/300" alt="Course Image">
+                <p>Learn the basics of robotics and explore creative projects in this introductory course.</p>
+            </div>
+            <div class="course">
+                <h3>Advanced Robotics</h3>
+                <img class="course-img" src="https://via.placeholder.com/300" alt="Course Image">
+                <p>Take your robotics skills to the next level with advanced projects and challenges.</p>
+            </div>
+            <div class="course">
+                <h3>AI and Arduino</h3>
+                <img class="course-img" src="https://via.placeholder.com/300" alt="Course Image">
+                <p>Combine artificial intelligence and Arduino to build intelligent systems and devices.</p>
+            </div>
+        </section>
+
+        <section id="register">
+            <h2>Register for a Course</h2>
+            <div class="register-form">
+                <form id="registration-form" action="/submit_registration" method="post">
+                    <label for="fname">First Name:</label>
+                    <input type="text" id="fname" name="fname" required>
+
+                    <label for="lname">Last Name:</label>
+                    <input type="text" id="lname" name="lname" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone">
+
+                    <label for="course">Select Course:</label>
+                    <select id="course" name="course">
+                        <option value="intro-to-robotics">Introduction to Robotics</option>
+                        <option value="adv-robotics">Advanced Robotics</option>
+                        <option value="ai-arduino">AI and Arduino</option>
+                    </select>
+
+                    <label for="comments">Any Special Requirements/Comments:</label>
+                    <textarea id="comments" name="comments"></textarea>
+
+                    <input type="submit" value="Submit">
+                </form>
+                <!-- Add Razorpay payment button -->
+                <button id="payment-button">Pay Now</button>
+            </div>
+        </section>
     </div>
-    <div class="content">
-        <h2>About Us</h2>
-        <p>We provide online classes for Arduino and ChatGPT to school kids.</p>
-        
-        <h2>Our Courses</h2>
-        <h3>Arduino for Kids</h3>
-        <p>Learn the basics of Arduino programming and electronics.</p>
-        
-        <h3>ChatGPT for Kids</h3>
-        <p>Learn how to interact with and use ChatGPT for various tasks.</p>
-        
-        <h2>Testimonials</h2>
-        <div class="testimonial">
-            <p>"My child loved the Arduino course! The instructors were very patient and knowledgeable."</p>
-            <p>- Parent</p>
-        </div>
-        <div class="testimonial">
-            <p>"The ChatGPT course was very informative. My child is now very interested in AI."</p>
-            <p>- Parent</p>
-        </div>
-        
-        <h2>Contact Us</h2>
-        <p>For more information about our courses, please contact us at info@learnloom.co.in.</p>
-    </div>
-    <div class="footer">
-        <p>© 2024 LearnLoom</p>
-    </div>
+    
+    <footer>
+        <p>&copy; 2024 LearnLoom</p>
+        <p>
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Terms of Service</a> | 
+            <a href="#">FAQ</a>
+        </p>
+    </footer>
+
+    <!-- Script to handle Razorpay payment -->
+    <script>
+        // Razorpay payment integration script...
+    </script>
 </body>
 </html>
