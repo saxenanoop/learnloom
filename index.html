@@ -148,7 +148,8 @@
         .logo {
             display: block;
             margin: 0 auto 20px;
-            max-width: 200px;
+            max-width: 100%;
+            height: auto;
         }
 
         /* Course image styles */
@@ -156,8 +157,37 @@
             display: block;
             margin: 0 auto;
             max-width: 100%;
+            height: auto;
             border-radius: 10px;
             margin-bottom: 20px;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            nav a {
+                margin: 0 10px;
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            .course {
+                padding: 15px;
+            }
+
+            .register-form {
+                padding: 15px;
+            }
+
+            .register-form input[type="submit"] {
+                padding: 8px 16px;
+            }
         }
     </style>
 </head>
